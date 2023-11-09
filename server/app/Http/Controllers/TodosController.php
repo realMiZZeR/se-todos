@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Mail;
 class TodosController extends Controller
 {
     /**
-     * @OA\Post(
+     * @OA\Get(
      *  path="/api/todos/create",
      *  summary="Создание заметки",
      *  security={
@@ -22,13 +22,14 @@ class TodosController extends Controller
      *      in="query",
      *      required=true,
      *      @OA\Schema(type="string"),
+     *      @OA\Examples(example="title", value="Заголовок", summary="Заголовок"),
      *  ),
      *  @OA\Parameter(
      *      name="description",
      *      description="Описание",
      *      in="query",
-     *      required=true,
      *      @OA\Schema(type="string"),
+     *      @OA\Examples(example="descr", value="Текст, описывающий смысл жизни.", summary="Описание"),
      *   ),
      *  @OA\Response(
      *   response=200,

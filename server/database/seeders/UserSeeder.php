@@ -14,15 +14,24 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create default users.
-        User::factory()
-            ->count(2)
-            ->create();
+        $role = config('enums.user_roles');
 
-        // Create administrator.
+        // Create default user.
         User::factory()
             ->create([
-                'role_id' => DB::table('user_roles')->where('title', '=', 'Администратор')->first()->id,
+                'name' => 'Max',
+                'email' => 'maxcan2work@gmail.com',
+                'password' => 'pass',
+                'role_id' => $role['guest'],
+            ]);
+
+        // Create admin.
+        User::factory()
+            ->create([
+                'name' => 'admin',
+                'email' => 'admin@se.com',
+                'password' => 'pass',
+                'role_id' => $role['admin'],
             ]);
     }
 }

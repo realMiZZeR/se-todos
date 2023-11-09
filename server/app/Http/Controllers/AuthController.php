@@ -23,6 +23,8 @@ class AuthController extends Controller
      *      in="query",
      *      required=true,
      *      @OA\Schema(type="string"),
+     *      @OA\Examples(example="guest", value="maxcan2work@gmail.com", summary="Обычный пользователь"),
+     *      @OA\Examples(example="admin", value="admin@se.com", summary="Администратор"),
      *  ),
      *  @OA\Parameter(
      *      name="password",
@@ -30,6 +32,7 @@ class AuthController extends Controller
      *      in="query",
      *      required=true,
      *      @OA\Schema(type="string"),
+     *      @OA\Examples(example="pass", value="pass", summary="Пароль"),
      *   ),
      *  @OA\Response(
      *   response=200,

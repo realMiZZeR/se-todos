@@ -18,6 +18,16 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        },
+                        "examples": {
+                            "guest": {
+                                "summary": "Обычный пользователь",
+                                "value": "maxcan2work@gmail.com"
+                            },
+                            "admin": {
+                                "summary": "Администратор",
+                                "value": "admin@se.com"
+                            }
                         }
                     },
                     {
@@ -27,6 +37,12 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        },
+                        "examples": {
+                            "pass": {
+                                "summary": "Пароль",
+                                "value": "pass"
+                            }
                         }
                     }
                 ],
@@ -66,9 +82,9 @@
             }
         },
         "/api/todos/create": {
-            "post": {
+            "get": {
                 "summary": "Создание заметки",
-                "operationId": "3f3a29d9be013fba7a2e7258b773a738",
+                "operationId": "556da711c528442795ae00a5e8f540ac",
                 "parameters": [
                     {
                         "name": "title",
@@ -77,15 +93,26 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        },
+                        "examples": {
+                            "title": {
+                                "summary": "Заголовок",
+                                "value": "Заголовок"
+                            }
                         }
                     },
                     {
                         "name": "description",
                         "in": "query",
                         "description": "Описание",
-                        "required": true,
                         "schema": {
                             "type": "string"
+                        },
+                        "examples": {
+                            "descr": {
+                                "summary": "Описание",
+                                "value": "Текст, описывающий смысл жизни."
+                            }
                         }
                     }
                 ],
