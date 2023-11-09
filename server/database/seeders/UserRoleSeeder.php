@@ -13,16 +13,15 @@ class UserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [
-            'Пользователь',
-            'Администратор',
-        ];
+        $roles = config('enums.user_roles');
 
-        for ($i = 0; $i < count($roles); $i++)
+        foreach ($roles as $key => $value)
         {
-           UserRole::factory()->create([
-               'title' => $roles[$i],
-           ]);
+            UserRole::factory()
+                ->create([
+                    'id' => $key,
+                    'title' => $value,
+                ]);
         }
     }
 }
