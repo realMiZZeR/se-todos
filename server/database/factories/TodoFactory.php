@@ -20,7 +20,7 @@ class TodoFactory extends Factory
         return [
             'title' => fake()->text(20),
             'description' => fake()->text(),
-            'user_id' => fake()->unique()->numberBetween(1, User::all()->count())
+            'user_id' => fake()->numberBetween(1, User::all()->count())
         ];
     }
 }
