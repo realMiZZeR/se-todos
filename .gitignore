@@ -23,7 +23,7 @@ yarn-error.log
 
 # dependencies
 /node_modules
-/vendor
+/server/vendor
 /server/vendor/bin/carbon
 /server/vendor/bin/carbon.bat
 /server/vendor/bin/generate-defuse-key

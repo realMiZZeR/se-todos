@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Документация к TODO API.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/documentation": {},
+        "/api/login": {
+            "post": {
+                "summary": "Авторизация пользователя",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Электронная почта",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Пароль",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Авторизация прошла успешно и вернула токен."
+                    },
+                    "401": {
+                        "description": "Неверно введён пароль."
+                    },
+                    "404": {
+                        "description": "Пользователь с такой электронной почтой не найден."
+                    },
+                    "422": {
+                        "description": "Не все поля заполнены или заполнены неверно."
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "summary": "Выход из учётной записи пользователя.",
+                "operationId": "fe8f3429cd6979b3b4517e186505f9f9",
+                "responses": {
+                    "200": {
+                        "description": "Авторизация прошла успешно и вернула токен."
+                    },
+                    "401": {
+                        "description": "Необходимо авторизироваться."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/todos/create": {
+            "post": {
+                "summary": "Создание заметки",
+                "operationId": "3f3a29d9be013fba7a2e7258b773a738",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Заголовок",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Описание",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Заметка создалась и было отправлено письмо на электронную почту."
+                    },
+                    "401": {
+                        "description": "Необходимо авторизироваться."
+                    },
+                    "422": {
+                        "description": "Не все поля заполнены или заполнены неверно."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/todos": {
+            "post": {
+                "summary": "Извлечение заметок из БД.",
+                "operationId": "82b4a55ff095d8b01b70910ac5828f80",
+                "responses": {
+                    "200": {
+                        "description": "Метод отработал успешно и вернул хотя бы 1 заметку."
+                    },
+                    "204": {
+                        "description": "Метод отработал успешно, но ответ пустой."
+                    },
+                    "401": {
+                        "description": "Необходимо авторизироваться."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "bearerAuth",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
