@@ -15,12 +15,12 @@ class UserRoleSeeder extends Seeder
     {
         $roles = config('enums.user_roles');
 
-        foreach ($roles as $key => $value)
+        foreach ($roles as $name => $id)
         {
             UserRole::factory()
                 ->create([
-                    'id' => $key,
-                    'title' => $value,
+                    'id' => $id,
+                    'title' => $name,
                 ]);
         }
     }
