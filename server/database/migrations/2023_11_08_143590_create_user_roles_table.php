@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_roles', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->unsignedBigInteger('id')->primary();
             $table->string('title');
         });
     }

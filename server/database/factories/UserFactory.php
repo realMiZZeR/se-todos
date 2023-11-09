@@ -22,12 +22,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $roles = config('enums.user_roles');
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'role_id' => DB::table('user_roles')->where('title', '=', 'Пользователь')->first()->id,
+            'role_id' => $roles['guest'],
             'remember_token' => Str::random(10),
         ];
     }
